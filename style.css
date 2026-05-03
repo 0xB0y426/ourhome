@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: radial-gradient(circle at center, #050505, #000 80%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 34px;
+    margin-bottom: 20px;
+    color: #aaa;
+}
+
+.top {
+    font-size: 44px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.symbol {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.algiz {
+    font-size: 28px;
+    color: #aaa;
+    opacity: 0.8;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.times {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 140px;
+    margin-bottom: 50px;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-block small {
+    font-size: 13px;
+    color: #888;
+    margin-top: 6px;
+}
+
+.distance h2 {
+    font-size: 22px;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+.distance p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#globe {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

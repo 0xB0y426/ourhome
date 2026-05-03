@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Home...</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/globe.gl"></script>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+
+    <h1 class="title">Our Home...</h1>
+
+    <div class="top">
+        <span>Magnetron</span>
+        <span class="symbol" id="heart">
+            ❤️ <span class="algiz">ᛉ</span>
+        </span>
+        <span>Sarcasm</span>
+    </div>
+
+    <div class="presence">
+        <div>
+            <strong>I am here</strong><br>
+            Rio de Janeiro — <span id="brasil"></span>
+        </div>
+
+        <div>
+            <strong>You are here</strong><br>
+            Moscow — <span id="moscow"></span>
+        </div>
+    </div>
+
+    <div class="distance">
+        <h2>Our souls are far apart by...</h2>
+        <p>~11,500 km • 11,500,000 meters</p>
+        <div id="globe"></div>
+    </div>
+
+</div>
+
+<script>
+function updateTimes() {
+    const now = new Date();
+
+    const brasil = now.toLocaleTimeString("pt-BR", {
+        timeZone: "America/Sao_Paulo",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    const moscow = now.toLocaleTimeString("ru-RU", {
+        timeZone: "Europe/Moscow",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+
+    document.getElementById("brasil").textContent = brasil;
+    document.getElementById("moscow").textContent = moscow;
+
+    const hour = now.getHours();
+    if (hour >= 20 || hour <= 5) {
+        document.body.classList.add("night");
+    }
+}
+
+setInterval(updateTimes, 1000);
+updateTimes();
+
+document.getElementById("heart").onclick = () => {
+    const msg = document.getElementById("hiddenMessage");
+    msg.classList.toggle("show");
+};
+
+const globe = Globe()(document.getElementById('globe'))
+    .width(window.innerWidth * 0.8)
+    .height(650)
+    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+    .backgroundColor('#000')
+    .atmosphereColor('#6a7cff')
+    .atmosphereAltitude(0.25)
+    .arcsData([
+        {
+            startLat: -22.9068,
+            startLng: -43.1729,
+            endLat: 55.7558,
+            endLng: 37.6173
+        }
+    ])
+    .arcColor(() => ['#ffd700', '#ffd700'])
+    .arcStroke(1.5)
+    .arcDashLength(1)
+    .arcDashGap(0)
+    .arcDashAnimateTime(0)
+    .pointsData([
+        { lat: -22.9068, lng: -43.1729, size: 0.8 },
+        { lat: 55.7558, lng: 37.6173, size: 0.8 }
+    ])
+    .pointColor(() => '#ffffff')
+    .pointAltitude(0.04);
+
+globe.controls().autoRotate = false;
+globe.pointOfView({ lat: 35, lng: 10, altitude: 2.1 });
+</script>
+
+</body>
+</html>
